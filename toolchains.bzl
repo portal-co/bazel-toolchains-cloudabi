@@ -5,67 +5,71 @@ def toolchains_cloudabi_dependencies():
     http_archive(
         name = "org_llvm_llvm_x86_64_apple_darwin",
         build_file = "@org_cloudabi_bazel_toolchains_cloudabi//:BUILD.llvm",
-        sha256 = "b3ad93c3d69dfd528df9c5bb1a434367babb8f3baea47fbb99bf49f1b03c94ca",
-        strip_prefix = "clang+llvm-7.0.0-x86_64-apple-darwin",
-        urls = ["https://releases.llvm.org/7.0.0/clang+llvm-7.0.0-x86_64-apple-darwin.tar.xz"],
+        # sha256 = "b3ad93c3d69dfd528df9c5bb1a434367babb8f3baea47fbb99bf49f1b03c94ca",
+        strip_prefix = "clang+llvm-19.0.0-x86_64-apple-darwin",
+        urls = ["https://releases.llvm.org/19.0.0/clang+llvm-19.0.0-x86_64-apple-darwin.tar.xz"],
     )
 
     http_archive(
         name = "org_llvm_llvm_x86_64_unknown_freebsd",
         build_file = "@org_cloudabi_bazel_toolchains_cloudabi//:BUILD.llvm",
-        sha256 = "95ceb933ccf76e3ddaa536f41ab82c442bbac07cdea6f9fbf6e3b13cc1711255",
-        strip_prefix = "clang+llvm-7.0.0-amd64-unknown-freebsd11",
-        urls = ["https://releases.llvm.org/7.0.0/clang+llvm-7.0.0-amd64-unknown-freebsd11.tar.xz"],
+        # sha256 = "95ceb933ccf76e3ddaa536f41ab82c442bbac07cdea6f9fbf6e3b13cc1711255",
+        strip_prefix = "clang+llvm-19.0.0-amd64-unknown-freebsd11",
+        urls = ["https://releases.llvm.org/19.0.0/clang+llvm-19.0.0-amd64-unknown-freebsd11.tar.xz"],
     )
 
     http_archive(
         name = "org_llvm_llvm_x86_64_unknown_linux_gnu",
         build_file = "@org_cloudabi_bazel_toolchains_cloudabi//:BUILD.llvm",
-        sha256 = "5c90e61b06d37270bc26edb305d7e498e2c7be22d99e0afd9f2274ef5458575a",
-        strip_prefix = "clang+llvm-7.0.0-x86_64-linux-gnu-ubuntu-14.04",
-        urls = ["https://releases.llvm.org/7.0.0/clang+llvm-7.0.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz"],
+        # sha256 = "5c90e61b06d37270bc26edb305d7e498e2c7be22d99e0afd9f2274ef5458575a",
+        strip_prefix = "clang+llvm-19.0.0-x86_64-linux-gnu-ubuntu-14.04",
+        urls = ["https://releases.llvm.org/19.0.0/clang+llvm-19.0.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz"],
     )
 
     git_repository(
-        name = "org_cloudabi_argdata",
-        commit = "191ab391fbe0be3edbee59bedd73165de9b3abf5",
-        remote = "https://github.com/NuxiNL/argdata.git",
+        name = "pc_portal_cloudabi_argdata",
+        # commit = "191ab391fbe0be3edbee59bedd73165de9b3abf5",
+        remote = "https://github.com/portal-co/argdata.git",
+        branch = "master"
     )
 
     git_repository(
-        name = "org_cloudabi_cloudabi",
-        commit = "af51ede669dbca0875d20893dae7f760b052b238",
-        remote = "https://github.com/NuxiNL/cloudabi.git",
+        name = "pc_portal_cloudabi_cloudabi",
+        # commit = "af51ede669dbca0875d20893dae7f760b052b238",
+        remote = "https://github.com/portal-co/cloudabi.git",
+                branch = "master"
     )
 
-    if "org_cloudabi_cloudabi_utils" not in native.existing_rules():
+    if "pc_portal_cloudabi_cloudabi_utils" not in native.existing_rules():
         git_repository(
-            name = "org_cloudabi_cloudabi_utils",
-            commit = "be1ce21e1dded9c0c0a6ebe144cbea01cf44a874",
-            remote = "https://github.com/NuxiNL/cloudabi-utils.git",
+            name = "pc_portal_cloudabi_cloudabi_utils",
+            # commit = "be1ce21e1dded9c0c0a6ebe144cbea01cf44a874",
+            remote = "https://github.com/portal-co/cloudabi-utils.git",
+                    branch = "master"
         )
 
-    if "org_cloudabi_cloudlibc" not in native.existing_rules():
+    if "pc_portal_cloudabi_cloudlibc" not in native.existing_rules():
         git_repository(
-            name = "org_cloudabi_cloudlibc",
-            commit = "04a34ca2ead2408dde759395cc370b373ce8ed64",
-            remote = "https://github.com/NuxiNL/cloudlibc.git",
+            name = "pc_portal_cloudabi_cloudlibc",
+            # commit = "04a34ca2ead2408dde759395cc370b373ce8ed64",
+            remote = "https://github.com/portal-co/cloudlibc.git",
+                    branch = "master"
         )
 
     http_archive(
         name = "org_llvm_cfe",
         build_file = "@org_cloudabi_bazel_toolchains_cloudabi//:BUILD.cfe",
-        sha256 = "a45b62dde5d7d5fdcdfa876b0af92f164d434b06e9e89b5d0b1cbc65dfe3f418",
-        strip_prefix = "cfe-7.0.1.src",
-        urls = ["https://releases.llvm.org/7.0.1/cfe-7.0.1.src.tar.xz"],
+        # sha256 = "a45b62dde5d7d5fdcdfa876b0af92f164d434b06e9e89b5d0b1cbc65dfe3f418",
+        strip_prefix = "cfe-19.0.1.src",
+        urls = ["https://releases.llvm.org/19.0.1/cfe-19.0.1.src.tar.xz"],
     )
 
     http_archive(
         name = "org_llvm_compiler_rt",
         build_file = "@org_cloudabi_bazel_toolchains_cloudabi//:BUILD.compiler-rt",
         sha256 = "782edfc119ee172f169c91dd79f2c964fb6b248bd9b73523149030ed505bbe18",
-        strip_prefix = "compiler-rt-7.0.1.src",
-        urls = ["https://releases.llvm.org/7.0.1/compiler-rt-7.0.1.src.tar.xz"],
+        strip_prefix = "compiler-rt-19.0.1.src",
+        urls = ["https://releases.llvm.org/19.0.1/compiler-rt-19.0.1.src.tar.xz"],
     )
 
     http_archive(
@@ -75,25 +79,25 @@ def toolchains_cloudabi_dependencies():
             "@org_cloudabi_bazel_toolchains_cloudabi//:patches/libcxx-no-std-funcs.diff",
             "@org_cloudabi_bazel_toolchains_cloudabi//:patches/libcxx-unsafe-string-includes.diff",
         ],
-        sha256 = "020002618b319dc2a8ba1f2cba88b8cc6a209005ed8ad29f9de0c562c6ebb9f1",
-        strip_prefix = "libcxx-7.0.1.src",
-        urls = ["https://releases.llvm.org/7.0.1/libcxx-7.0.1.src.tar.xz"],
+        # sha256 = "020002618b319dc2a8ba1f2cba88b8cc6a209005ed8ad29f9de0c562c6ebb9f1",
+        strip_prefix = "libcxx-19.0.1.src",
+        urls = ["https://releases.llvm.org/19.0.1/libcxx-19.0.1.src.tar.xz"],
     )
 
     http_archive(
         name = "org_llvm_libcxxabi",
         build_file = "@org_cloudabi_bazel_toolchains_cloudabi//:BUILD.libcxxabi",
-        sha256 = "8168903a157ca7ab8423d3b974eaa497230b1564ceb57260be2bd14412e8ded8",
-        strip_prefix = "libcxxabi-7.0.1.src",
-        urls = ["https://releases.llvm.org/7.0.1/libcxxabi-7.0.1.src.tar.xz"],
+        # sha256 = "8168903a157ca7ab8423d3b974eaa497230b1564ceb57260be2bd14412e8ded8",
+        strip_prefix = "libcxxabi-19.0.1.src",
+        urls = ["https://releases.llvm.org/19.0.1/libcxxabi-19.0.1.src.tar.xz"],
     )
 
     http_archive(
         name = "org_llvm_libunwind",
         build_file = "@org_cloudabi_bazel_toolchains_cloudabi//:BUILD.libunwind",
-        sha256 = "89c852991dfd9279dbca9d5ac10b53c67ad7d0f54bbab7156e9f057a978b5912",
-        strip_prefix = "libunwind-7.0.1.src",
-        urls = ["https://releases.llvm.org/7.0.1/libunwind-7.0.1.src.tar.xz"],
+        # sha256 = "89c852991dfd9279dbca9d5ac10b53c67ad7d0f54bbab7156e9f057a978b5912",
+        strip_prefix = "libunwind-19.0.1.src",
+        urls = ["https://releases.llvm.org/19.0.1/libunwind-19.0.1.src.tar.xz"],
     )
 
     http_archive(
